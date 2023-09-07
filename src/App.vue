@@ -5,7 +5,7 @@
 
 <template>
   <header>
-    <h1>Rock Paper Scissor Love</h1>
+    <h1>Rock Paper Scissors Love</h1>
 
   </header>
   <div id="app">
@@ -23,10 +23,10 @@
             
             <div class="team-info"  >
                 <div class="imgframe">
-                    <img  v-if="leftTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissor">
+                    <img  v-if="leftTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissors">
                     <img  v-if="leftTeamChoice ==='Rock'" src="/src/assets/img/RockF.png" alt="Rock">
                     <img  v-if="leftTeamChoice ==='Paper'" src="/src/assets/img/PaperF.png" alt="Paper">
-                    <img  v-if="leftTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissor">
+                    <img  v-if="leftTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissors">
                     <img  v-if="leftTeamChoice ==='Love'" src="/src/assets/img/LoveF.png" alt="Love">
                 </div>
             <p>Left</p>
@@ -35,10 +35,10 @@
         <div class="team">
             <div class="team-info">
                 <div class="imgframe">
-                    <img v-if="rightTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissor">
+                    <img v-if="rightTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissors">
                     <img v-if="rightTeamChoice ==='Rock'" src="/src/assets/img/RockF.png" alt="Rock">
                     <img v-if="rightTeamChoice ==='Paper'" src="/src/assets/img/PaperF.png" alt="Paper">
-                    <img v-if="rightTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissor">
+                    <img v-if="rightTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissors">
                     <img v-if="rightTeamChoice ==='Love'" src="/src/assets/img/LoveF.png" alt="Love">
                 </div>
             <p>Right</p>
