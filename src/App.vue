@@ -70,7 +70,7 @@ export default {
       leftScore: 0,
       rightScore: 0,
       round: 0, 
-      animateLeft: false, // Track animation state for left image
+      animateLeft: false, 
       animateRight: false,
     };
   },
@@ -83,7 +83,7 @@ export default {
         'Love': '/src/assets/img/LoveF.png',
         '': '/src/assets/img/ScissorF.png',
       };
-      return imageUrls[choice] || imageUrls[''];// Use the default image URL for unsupported choices
+      return imageUrls[choice] || imageUrls[''];
     },
 
     playGame() {
@@ -93,7 +93,7 @@ export default {
       setTimeout(() => {
         this.animateLeft = false;
         this.animateRight = false;
-      }, 500); // 1000ms (1 second) delay
+      }, 500); 
       
       const choices = ['Rock', 'Paper', 'Scissors', 'Love'];
 
