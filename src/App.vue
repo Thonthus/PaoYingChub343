@@ -1,6 +1,5 @@
 <script setup>
-
-
+import { ref } from 'vue'
 </script>
 
 <template>
@@ -23,11 +22,7 @@
             
             <div class="team-info"  >
                 <div class="imgframe">
-                    <img  v-if="leftTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissors">
-                    <img  v-if="leftTeamChoice ==='Rock'" src="/src/assets/img/RockF.png" alt="Rock">
-                    <img  v-if="leftTeamChoice ==='Paper'" src="/src/assets/img/PaperF.png" alt="Paper">
-                    <img  v-if="leftTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissors">
-                    <img  v-if="leftTeamChoice ==='Love'" src="/src/assets/img/LoveF.png" alt="Love">
+                    <img :src="leftTeamChoiceImg" :class="{ animated: animateLeft }" alt="LeftTeam" />
                 </div>
             <p>Left</p>
             </div>
@@ -35,11 +30,7 @@
         <div class="team">
             <div class="team-info">
                 <div class="imgframe">
-                    <img v-if="rightTeamChoice ===''" src="/src/assets/img/ScissorF.png" alt="Scissors">
-                    <img v-if="rightTeamChoice ==='Rock'" src="/src/assets/img/RockF.png" alt="Rock">
-                    <img v-if="rightTeamChoice ==='Paper'" src="/src/assets/img/PaperF.png" alt="Paper">
-                    <img v-if="rightTeamChoice ==='Scissors'" src="/src/assets/img/ScissorF.png" alt="Scissors">
-                    <img v-if="rightTeamChoice ==='Love'" src="/src/assets/img/LoveF.png" alt="Love">
+                    <img :src="rightTeamChoiceImg" :class="{ animated: animateRight }" alt="RightTeam" />
                 </div>
             <p>Right</p>
             </div>
@@ -79,16 +70,36 @@ export default {
       leftScore: 0,
       rightScore: 0,
       round: 0, 
+      animateLeft: false, // Track animation state for left image
+      animateRight: false,
     };
   },
   methods: {
+    getImageUrl(choice) {
+      const imageUrls = {
+        'Rock': '/src/assets/img/RockF.png',
+        'Paper': '/src/assets/img/PaperF.png',
+        'Scissors': '/src/assets/img/ScissorF.png',
+        'Love': '/src/assets/img/LoveF.png',
+        '': '/src/assets/img/ScissorF.png',
+      };
+      return imageUrls[choice] || imageUrls[''];// Use the default image URL for unsupported choices
+    },
+
     playGame() {
+      this.animateLeft = true;
+      this.animateRight = true;
+
+      setTimeout(() => {
+        this.animateLeft = false;
+        this.animateRight = false;
+      }, 500); // 1000ms (1 second) delay
       
       const choices = ['Rock', 'Paper', 'Scissors', 'Love'];
 
       
-      this.leftTeamChoice = choices[Math.floor(Math.random() * 3) + 1];
-      this.rightTeamChoice = choices[Math.floor(Math.random() * 3) + 1];
+      this.leftTeamChoice = choices[Math.floor(Math.random() * 4)];
+      this.rightTeamChoice = choices[Math.floor(Math.random() * 4)];
 
 
       
@@ -132,6 +143,12 @@ export default {
     },
   },
     computed: {
+        leftTeamChoiceImg() {
+          return this.getImageUrl(this.leftTeamChoice);
+        },
+        rightTeamChoiceImg() {
+          return this.getImageUrl(this.rightTeamChoice);
+        },
         scoreboardMessage() {
             const leftPointsText = this.leftScore === 1 ? 'point' : (this.leftScore === 0 ? 'point' : 'points');
             const rightPointsText = this.rightScore === 1 ? 'point' : (this.rightScore === 0 ? 'point' : 'points');
